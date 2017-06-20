@@ -1,19 +1,17 @@
-LATEST GUI RELEASE
-==================
-
-Go to https://zcash4mac.com to download the dmg of zcash4mac,
-includes the latest release of zcash and a GUI wallet, no
-command line needed!
-
 Command-line version
 --------------------
 
-The User Guide for the command-line version is at:
+This is a port of the radix42/zcash "zcash4mac" patches to zcash over to hush.
+
+The User Guide for the command-line version of that is at:
 https://github.com/radix42/zcash/wiki/Mac-User-Guide
 
-It includes links to a pre-built binary release of the command-line
-zcash for mac, usage instructions, and an improved version of the
-following instructions to build from source.
+Before hushd will start, you will need to create a `hush.conf` file:
+```
+mkdir -p ~/Library/"Application Support"/Hush
+echo "rpcuser=username" >> "~/Library/"Application Support"/Hush/hush.conf
+echo "rpcpassword=`head -c 32 /dev/urandom | base64`" >> ~/Library/"Application Support"/Hush/hush.conf
+```
 
 Building from source
 --------------------
@@ -41,32 +39,12 @@ brew install wget
 Get all that installed, then run:
 
 ```shell
-git clone https://github.com/radix42/zcash.git
-cd zcash
-git checkout v1.0.4-mac-gcc
+git clone {this github repo URL}
+cd hush
+git checkout v1.0.9-mac
 ./zcutil/build-mac.sh
 ```
-When you are done building, you need to do a few things in the [Configuration](https://github.com/zcash/zcash/wiki/1.0-User-Guide#configuration) section of the Zcash User Guide differently because we are on the Mac. All instances of `~/.zcash` need to be replaced by `~/Library/Application\ Support/Zcash` 
+When you are done building, you need to do a few things in the [Configuration](https://github.com/zcash/zcash/wiki/1.0-User-Guide#configuration) section of the Zcash User Guide differently because we are on the Mac. All instances of `~/.hush` need to be replaced by `~/Library/Application\ Support/Hush` 
+
 The fetch-params.sh script, however, has already been altered to fetch the proving keys into the correct directory to conform to Mac specific naming conventions.
 
-Happy Building,
-
-David Mercer
-
-Tucson, AZ
-
-email <radix42@gmail.com> if you've followed the above
-instructions to the letter and get stuck!
-
-This is a volunteer effort, I'm not a ZcashCo employee, and your support is what allows me
-to continue porting Zcash to more platforms.
-
-Donations in BTC to: 1L33E8M1LdXmAtgWaSgAVr4TEyDrLWk69B
-
-in ZEC to: t1WeYg7Vwe1E2N5sxY6MQ335x4i12KZwSMu
-
-or in dollars via PayPal to radix42@gmail.com
-
-Watch my website for upcoming versions and ports:
-
-https://zcash.mercerweiss.com
