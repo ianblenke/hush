@@ -18,7 +18,7 @@
 
 #include "crypto/equihash.h"
 #include "util.h"
-
+#include "compat/endian.h"
 #include <algorithm>
 #include <iostream>
 #include <stdexcept>

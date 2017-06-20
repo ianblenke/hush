@@ -21,11 +21,9 @@ function fetch_params {
     if ! [ -f "$output" ]
     then
         echo "Retrieving: $url"
-        wget \
-            --progress=dot:giga \
-            --output-document="$dlname" \
-            --continue \
-            --retry-connrefused --waitretry=3 --timeout=30 \
+        curl \
+            --output "$dlname" \
+            -# -L -C - \
             "$url"
 
         "$SHA256CMD" $SHA256ARGS -c <<EOF
